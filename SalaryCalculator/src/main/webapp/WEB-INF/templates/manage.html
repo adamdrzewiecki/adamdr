@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel='stylesheet' type="text/css" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container top-margin">
+        <!--/*@thymesVar id="manageCountriesFormInputs" type="com.adamdr.salcalc.model.dto.ManageCountriesFormInputs"*/-->
+        <form class="form-horizontal" th:action="@{/manage}" th:method="POST" th:object="${manageCountriesFormInputs}">
+        <div class="table-responsive col-sm-offset-3 col-sm-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Country</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="country, ordinal : ${countryList}">
+                    <td th:text="${ordinal.count}"></td>
+                    <td th:text="${country.name}"></td>
+                    <td>
+                        <a th:href="@{/editcountry(countryId=${country.id})}" class="btn btn-primary" role="button"
+                           aria-pressed="true">Edit Country</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/deletecountry(countryId=${country.id})}" class="btn btn-danger" role="button"
+                           aria-pressed="true">Delete Country</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <!--<div class="col-sm-offset-4 col-sm-4">-->
+                <a th:href="@{/createcountry}" class="btn btn-primary" role="button" aria-pressed="true">Add Country</a>
+            </div>
+            <div class="form-group top-margin">
+                <a th:href="@{/home}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
