@@ -16,9 +16,7 @@ public class SalaryService {
 
     public BigDecimal calculateSalary(Country country, HomeFormInputs homeFormInputs) {
         BigDecimal inputSalary = getSalaryFromInputs(homeFormInputs);
-        log.warn(inputSalary);
         BigDecimal currencyCurrentValue = currencyService.getCurrencyCurrentValue(country.getCurrency());
-        log.warn(currencyCurrentValue);
         return calculateResultSalary(inputSalary, currencyCurrentValue, country);
     }
 
@@ -28,9 +26,7 @@ public class SalaryService {
 
     private BigDecimal calculateResultSalary(BigDecimal daySalary, BigDecimal currencyCurrentValue, Country country) {
         BigDecimal monthlySalary = (daySalary.multiply(new BigDecimal(22)));
-        log.warn(monthlySalary);
         BigDecimal monthlySalaryDecreasedByFixedCosts = monthlySalary.subtract(country.getFixedCosts());
-        log.warn(monthlySalaryDecreasedByFixedCosts);
         BigDecimal monthlySalaryDecreasedByFixedCostsAndIncomeTax =
                 monthlySalaryDecreasedByFixedCosts.
                         subtract(monthlySalaryDecreasedByFixedCosts.
