@@ -23,6 +23,7 @@ import java.util.List;
 public class CountryContoller {
 
     private CountryDao countryDao;
+    private CountryValidator countryValidator;
 
     @InitBinder("country")
     protected void initBinder(WebDataBinder binder) {
@@ -48,7 +49,7 @@ public class CountryContoller {
 
     @GetMapping("/editcountry")
     public String editCountryForm(@ModelAttribute ManageCountriesFormInputs manageCountriesFormInputs, Model model) {
-        Country country = countryDao.findByID(manageCountriesFormInputs.getCountryId());
+        Country country = countryDao.findById(manageCountriesFormInputs.getCountryId());
         log.warn(country + " edit");
         model.addAttribute("country", country);
         return "country";
@@ -56,7 +57,7 @@ public class CountryContoller {
 
     @GetMapping("/deletecountry")
     public String deleteCountry(@ModelAttribute ManageCountriesFormInputs manageCountriesFormInputs) {
-        Country country = countryDao.findByID(manageCountriesFormInputs.getCountryId());
+        Country country = countryDao.findById(manageCountriesFormInputs.getCountryId());
         log.warn(country + " deleted");
         countryDao.delete(country);
         return "redirect:/manage";
@@ -74,10 +75,12 @@ public class CountryContoller {
     }
 
     @Autowired
-    private CountryValidator countryValidator;
-
-    @Autowired
     public void setCountryDao(CountryDao countryDao) {
         this.countryDao = countryDao;
+    }
+
+    @Autowired
+    public void setCountryValidator(CountryValidator countryValidator){
+        this.countryValidator = countryValidator;
     }
 }

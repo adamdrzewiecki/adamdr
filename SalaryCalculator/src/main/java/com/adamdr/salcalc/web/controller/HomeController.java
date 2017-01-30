@@ -43,7 +43,7 @@ public class HomeController {
         if (result.hasErrors()) {
             return "home";
         } else {
-            Country country = countryDao.findByID(homeFormInputs.getCountryId());
+            Country country = countryDao.findById(homeFormInputs.getCountryId());
             BigDecimal targetSalary = salaryService.calculateSalary(country, homeFormInputs);
             model.addAttribute("country", country);
             model.addAttribute("homeFormInputs", homeFormInputs);

@@ -10,7 +10,7 @@ public interface CountryDao {
 
     Country findByName(String name);
 
-    Country findByID(Long id);
+    Country findById(Long id);
 
     void save(Country countryToInsert);
 

@@ -27,7 +27,7 @@ public class CountryDaoImpl implements CountryDao {
     }
 
     @Override
-    public Country findByID(Long id) {
+    public Country findById(Long id) {
         return entityManager.createQuery("select c from Country c WHERE c.id = :countryId", Country.class).
                 setParameter("countryId", id).
                 getSingleResult();
