@@ -21,7 +21,7 @@ public class CountryDaoImpl implements CountryDao {
 
     @Override
     public Country findByName(String name) {
-        return entityManager.createQuery("select c from Country c WHERE c.name = :countryName", Country.class).
+        return entityManager.createQuery("select c from Country c WHERE LOWER(c.name) =LOWER(:countryName)", Country.class).
                 setParameter("countryName", name).
                 getSingleResult();
     }
