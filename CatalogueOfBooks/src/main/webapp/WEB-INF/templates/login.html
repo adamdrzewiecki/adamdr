@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel='stylesheet' type="text/css" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container top-margin">
+    <form class="form-horizontal" th:action="@{/login}" method="post">
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-4">
+                <div>
+                    <label> User Name : <input type="text" name="username" class="form-control"/></label>
+                </div>
+                <div>
+                    <label> Password: <input type="password" name="password" class="form-control"/></label>
+                </div>
+                <div>
+                    <input type="submit" value="Sign In" class="btn btn-primary"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
