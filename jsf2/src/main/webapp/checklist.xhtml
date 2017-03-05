@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/jsf/core ">
+<h:head>
+    <title>Check List</title>
+</h:head>
+<h:body>
+    <h1 style="margin-top: 50px; text-align: center">Check List</h1>
+    <h:form style="margin-left: 100px; margin-right: 100px">
+        <p:panelGrid columns="1" layout="grid" style="margin-top: 40px">
+            <p:inputTextarea rows="2" value="#{checkListBean.textArea}"/>
+            <p:commandButton value="Add Task" action="#{checkListBean.add()}" update="dataTable"/>
+        </p:panelGrid>
+
+        <p:dataTable value="#{checkListBean.taskList}" var="task" id="dataTable" styleClass="ui-datatable" style="margin-top: 40px" emptyMessage="You don't have any task to do :)">
+            <p:column headerText="Task" style="text-align: center">
+                #{task.text}
+            </p:column>
+            <p:column headerText="" width="140" style="text-align: center">
+                <p:commandButton value="Done" action="#{checkListBean.remove(task)}" update="dataTable"
+                                 styleClass="ui-priority-secondary" ajax="false"/>
+            </p:column>
+        </p:dataTable>
+
+        <p:commandButton value="Clear list" action="#{checkListBean.clear()}" update="dataTable" style="margin-top: 40px"/>
+    </h:form>
+</h:body>
+</html>
