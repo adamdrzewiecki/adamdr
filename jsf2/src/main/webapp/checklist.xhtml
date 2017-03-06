@@ -14,12 +14,12 @@
 <h:body>
     <h1 style="margin-top: 50px; text-align: center">Check List</h1>
     <h:form style="margin-left: 100px; margin-right: 100px">
-        <p:panelGrid columns="1" layout="grid" style="margin-top: 40px">
-            <p:inputTextarea rows="2" value="#{checkListBean.textArea}"/>
+        <p:panelGrid columns="1" layout="grid" style="margin-top: 40px; text-align: center">
+            <p:inputTextarea rows="2" value="#{checkListBean.textArea}" style="width: 40%; padding: 0px"/>
             <p:commandButton value="Add Task" action="#{checkListBean.add()}" update="dataTable"/>
         </p:panelGrid>
 
-        <p:dataTable value="#{checkListBean.taskList}" var="task" id="dataTable" styleClass="ui-datatable" style="margin-top: 40px" emptyMessage="You don't have any task to do :)">
+        <p:dataTable value="#{checkListBean.taskList}" var="task" id="dataTable" styleClass="ui-datatable" style="margin-top: 40px" emptyMessage="You don't have any task to do">
             <p:column headerText="Tasks" style="text-align: center">
                 #{task.text}
             </p:column>
