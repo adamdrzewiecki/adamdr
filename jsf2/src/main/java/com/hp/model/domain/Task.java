@@ -3,9 +3,11 @@ package com.hp.model.domain;
 import com.google.common.base.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Task {
     private int id;
     private String text;

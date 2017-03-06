@@ -8,6 +8,8 @@ public interface TaskDao {
 
     List<Task> getAll();
 
+    Task findById(int id);
+
     void addTask(Task task);
 
     void deleteTask(Task task);
